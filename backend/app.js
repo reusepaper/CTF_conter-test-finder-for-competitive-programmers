@@ -13,6 +13,9 @@ var sourceCode = require('./routes/sourceCode');
 var app = express();
 var bodyParser = require('body-parser');
 
+const swaggerDoc = require('./swaggerDoc');
+swaggerDoc(app);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -28,8 +31,8 @@ app.use(bodyParser.urlencoded({ extended: false })); // support encoded bodies
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/member', memberRouter);
-app.use('/markCode', markCodesRouter);
-app.use('/sourceCode', sourceCode);
+app.use('/mark_code', markCodesRouter);
+app.use('/source_code', sourceCode);
 
 
 // catch 404 and forward to error handler
