@@ -2,9 +2,9 @@ var  mysql = require('mysql');
 var os = require('os');  //호스트 이름을 가져오기 위한 모듈
 
 var dbconnInfo = {
-	//로컬
+	
 	dev:{
-		host: 'localhost',
+		host: '52.78.48.222',
 		port: '3306',
 		user: 'root',
 		password: 'ssafy',
