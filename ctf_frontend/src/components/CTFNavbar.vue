@@ -1,6 +1,6 @@
 <template>
-  <div>
-
+  <div class="navbar">
+    문제선택
   </div>
 </template>
 
@@ -10,6 +10,8 @@
   }
 </script>
 
-<style lang="scss" scoped>
-
+<style>
+  .navbar {
+    height: 10vh;
+  }
 </style>
