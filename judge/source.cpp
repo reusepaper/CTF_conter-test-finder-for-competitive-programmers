@@ -16,6 +16,7 @@ int main() {
         int a, b;
         cin >> a >> b;
         cout << a + b + (rand()%2) << endl;
+        cout << endl;
     }
     return 0;
 }
