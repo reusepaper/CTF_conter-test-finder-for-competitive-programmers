@@ -1,6 +1,6 @@
 <template>
-  <div>
-
+  <div class="progressbar">
+    progressbar
   </div>
 </template>
 
@@ -10,6 +10,11 @@
   }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+  .progressbar {
+    height: 10vh;
+    width: 100%;
+    clear: both;
+    background-color: white;
+  }
 </style>
