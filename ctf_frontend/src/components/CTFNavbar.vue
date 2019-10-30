@@ -10,8 +10,10 @@
   }
 </script>
 
-<style>
+<style scoped>
   .navbar {
     height: 10vh;
+    width: 100%;
+    background-color: #CFEAFF;
   }
 </style>

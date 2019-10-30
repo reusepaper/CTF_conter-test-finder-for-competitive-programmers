@@ -1,15 +1,22 @@
-<<template>
-    <div>
-
-    </div>
+<template>
+  <div class="result">
+    {{ resultStyle }}
+  </div>
 </template>
 
 <script>
-    export default {
-        
+  export default {
+    props: {
+      resultStyle: String
     }
+  }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+  .result {
+    height: 25vh;
+    width: 25%;
+    float: left;
+    background-color: white;
+  }
 </style>
