@@ -1,24 +1,13 @@
-# ctf_frontend
+# COUNTER-TEST FINDER FOR COMPETITIVE PROGRAMMERS (Front-end)
 
-## Project setup
+## 프로젝트 받고 아래 커맨드 입력 후 시작하기
 ```
-npm install
+npm ci
 ```
 
-### Compiles and hot-reloads for development
+### 컴파일 및 실행하기
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
