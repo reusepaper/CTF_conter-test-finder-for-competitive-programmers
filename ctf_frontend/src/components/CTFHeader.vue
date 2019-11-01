@@ -24,10 +24,9 @@
   .title {
     float: left;
     font-family: 'Black Han Sans', sans-serif;
-    font-size: 5vh;
+    font-size: 7vh;
     color: rgb(68, 68, 68);
-    margin: 0;
-    padding: 0;
+    margin: 1vh;
   }
 
   .loginbutton {
@@ -45,17 +44,17 @@
     font-weight: 400;
     line-height: 1;
     margin: 1vh;
-    padding: 0.8em 2.0em;
+    padding: 0.7em 1.4em;
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Fredoka One', cursive;
     font-weight: 700;
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
   }
   
-  .loginbutton::hover,
-  .loginbutton::focus {
+  .loginbutton:hover,
+  .loginbutton:focus {
     color: #fff;
     outline: 0;
     box-shadow: 0 0 40px 40px rgb(68, 68, 68) inset;
