@@ -11,14 +11,21 @@ router.post('/', function(req, res, next) {
   var userInputCode=req.body.userInputCode;
   var rightInputCode=req.body.rightInputCode;
   //var testcase=req.body.testcase;
+
+  userInputCode = userInputCode.replace(/\n/g, "");
+  userInputCode = userInputCode.replace(/\t/g, "");
+
+  rightInputCode = rightInputCode.replace(/\n/g, "");
+  rightInputCode = rightInputCode.replace(/\t/g, "");
+
+
   console.log({userInputCode:userInputCode,rightInputCode:rightInputCode});
   
   var userResult="Hello world!";
   var rightResult="Hello world!2";
-  
-  res.json({user:userResult,right:rightResult});
-  
-  res.send('respond with a resource');
+  var testcase="Hello world!!";
+  res.json({testcase:testcase,user:userResult,right:rightResult});
+
 });
 
 module.exports = router;
