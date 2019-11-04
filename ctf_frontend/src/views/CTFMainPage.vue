@@ -3,14 +3,15 @@
     <CTFHeader></CTFHeader>
     <CTFNavbar></CTFNavbar>
     <div>
-      <CTFCode codeStyle="userCode"></CTFCode>
-      <CTFCode codeStyle="rightCode"></CTFCode>
+      <CTFCode v-on:printResult="print"></CTFCode>
+      <!-- <CTFCode codeStyle="userCode"></CTFCode>
+      <CTFCode codeStyle="rightCode"></CTFCode> -->
     </div>
     <CTFProgressbar></CTFProgressbar>
     <div>
-      <CTFTestcase v-bind:propsTestcase="testcase" v-on:printResult="printTestCase(tc, u, r)"></CTFTestcase>
-      <CTFResult v-bind:propsUser="user" v-on:printResult="printUser(tc, u, r)" resultStyle="userResult"></CTFResult>
-      <CTFResult v-bind:propsRight="right" v-on:printResult="printRight(tc, u, r)" resultStyle="rightResult"></CTFResult>
+      <CTFTestcase v-bind:ins="testcase"></CTFTestcase>
+      <CTFResult v-bind:subs="user" resultStyle="userResult"></CTFResult>
+      <CTFResult v-bind:ans="right" resultStyle="rightResult"></CTFResult>
     </div>
   </div>
 </template>
@@ -24,6 +25,10 @@
   import CTFTestcase from '../components/CTFTestcase';
 
   export default {
+    /*jslint devel: true */
+    /* eslint-disable no-console */
+    /*eslint no-undef: "error"*/
+    /*eslint-env node*/
     components: {
       CTFHeader,
       CTFNavbar,
@@ -40,13 +45,10 @@
       }
     },
     methods: {
-      printTestCase: function(tc, u, r){ // eslint-disable-line no-unused-vars
+      print: function(tc, u, r){ // eslint-disable-line no-unused-vars
+        console.log(tc);
         this.testcase = tc;
-      },
-      printUser: function(tc, u, r){ // eslint-disable-line no-unused-vars
         this.user = u;
-      },
-      printRight: function(tc, u, r){ // eslint-disable-line no-unused-vars
         this.right = r;
       }
     }
