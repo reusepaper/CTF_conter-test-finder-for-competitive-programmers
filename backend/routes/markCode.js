@@ -24,19 +24,17 @@ router.post('/', function(req, res, next) {
 
   var child;
 
-command = "python /home/ubuntu/project/s1p2151001/backend/mwt/mwt/main.py "
+  command = "python /home/ubuntu/project/s1p2151001/backend/mwt/mwt/main.py "
 source = '"'+userInputCode+'"'; 
 
   child = exec(command + source,
     function (error, stdout, stderr) {
       var result = stdout
-      console.log(error);
-      console.log(stdout);
-      console.log(stderr);
-      result = JSON.parse(result);
       res.json(result);
-      console.log(result);
+      console.log(result)
+      console.log(typeof(result))
   })
+  
   var userResult="Hello world!";
   var rightResult="Hello world!2";
   var testcase="Hello world!!";
