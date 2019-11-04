@@ -13,11 +13,11 @@ router.post('/', function(req, res, next) {
   var rightInputCode=req.body.rightInputCode;
   //var testcase=req.body.testcase;
 
-  userInputCode = userInputCode.replace(/\n/g, "");
-  userInputCode = userInputCode.replace(/\t/g, "");
+  //userInputCode = userInputCode.replace(/\n/g, "");
+  //userInputCode = userInputCode.replace(/\t/g, "");
 
-  rightInputCode = rightInputCode.replace(/\n/g, "");
-  rightInputCode = rightInputCode.replace(/\t/g, "");
+  //rightInputCode = rightInputCode.replace(/\n/g, "");
+  //rightInputCode = rightInputCode.replace(/\t/g, "");
 
 
   console.log({userInputCode:userInputCode,rightInputCode:rightInputCode});
@@ -25,7 +25,8 @@ router.post('/', function(req, res, next) {
   var child;
 
   command = "python /home/ubuntu/project/s1p2151001/backend/mwt/mwt/main.py "
-source = '"'+userInputCode+'"'; 
+source ="'"+ userInputCode+"'"; 
+	console.log(source)
 
   child = exec(command + source,
     function (error, stdout, stderr) {
