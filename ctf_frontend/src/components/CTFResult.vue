@@ -1,10 +1,14 @@
 <template>
   <div class="result">
-    <div v-if="resultStyle === userResult">
-      {{ propsUser }}
+    <div v-if="resultStyle === 'userResult'">
+      <div>유저결과</div>
+      <pre>{{ subs.join('\n') }}
+      </pre>
     </div>
-    <div v-if="resultStyle === rightResult">
-      {{ propsRight }}
+    <div v-if="resultStyle === 'rightResult'">
+      <div>정답결과</div>
+      <pre>{{ ans.join('\n') }}
+      </pre>
     </div>
   </div>
 </template>
@@ -13,8 +17,8 @@
   export default {
     props: {
       resultStyle: String,
-      propsUser: String,
-      propsRight: String
+      ans: Array,
+      subs: Array
     }
   }
 </script>

@@ -1,12 +1,14 @@
 <template>
   <div class="testcase">
-    {{ propsTestcase }}
+    <div>테스트케이스</div>
+    <pre>{{ ins.join('\n') }}
+    </pre>
   </div>
 </template>
 
 <script>
   export default {
-    props: ['propsTestcase']
+    props: ['ins']
   }
 </script>
 
