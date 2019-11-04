@@ -2,25 +2,64 @@
   <div class="navbar">
     <div class="problems">
       <div class="btn-group">
-        <li @click="toggleMenu()" class="dropdown-toggle" v-if="selectedOption.name !== undefined">
-          {{ selectedOption.name }}
+        <li @click="toggleLanguageMenu()" class="dropdown-toggle" v-if="languageOption.name !== undefined">
+          {{ languageOption.name }}
           <span class="caret"></span>  
         </li>
-        <li @click="toggleMenu()" class="dropdown-toggle" v-if="selectedOption.name === undefined">
-          {{ placeholderText }}
+        <li @click="toggleLanguageMenu()" class="dropdown-toggle" v-if="languageOption.name === undefined">
+          {{ placeholderTextLanguage }}
           <span class="caret"></span>  
         </li>
 
-        <ul class="dropdown-menu" v-if="showMenu">
-          <li v-for="(option, idx) in options" :key="idx">
-            <a href="javascript:void(0)" @click="updateOption(option)">
+        <ul class="dropdown-menu" v-if="showLanguageMenu">
+          <li v-for="(option, idx) in languageOptions" :key="idx">
+            <a href="javascript:void(0)" @click="updateLanguageOption(option)">
               {{ option.name }}
             </a>
           </li>
         </ul>
       </div>
+      
+      <div class="btn-group">
+        <li @click="toggleThemeMenu()" class="dropdown-toggle" v-if="themeOption.name !== undefined">
+          {{ themeOption.name }}
+          <span class="caret"></span>  
+        </li>
+        <li @click="toggleThemeMenu()" class="dropdown-toggle" v-if="themeOption.name === undefined">
+          {{ placeholderTextTheme }}
+          <span class="caret"></span>  
+        </li>
+
+        <ul class="dropdown-menu" v-if="showThemeMenu">
+          <li v-for="(option, idx) in themeOptions" :key="idx">
+            <a href="javascript:void(0)" @click="updateThemeOption(option)">
+              {{ option.name }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="btn-group">
+        <li @click="toggleAlgoSiteMenu()" class="dropdown-toggle" v-if="algoSiteOption.name !== undefined">
+          {{ algoSiteOption.name }}
+          <span class="caret"></span>  
+        </li>
+        <li @click="toggleAlgoSiteMenu()" class="dropdown-toggle" v-if="algoSiteOption.name === undefined">
+          {{ placeholderTextAlgoSite }}
+          <span class="caret"></span>  
+        </li>
+
+        <ul class="dropdown-menu" v-if="showAlgoSiteMenu">
+          <li v-for="(option, idx) in algoSiteOptions" :key="idx">
+            <a href="javascript:void(0)" @click="updateAlgoSiteOption(option)">
+              {{ option.name }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
     </div>
-    <button class="runButton">RUN</button>
+    <!-- <button class="runButton">RUN</button> -->
     <div class="clear"></div>
   </div>
 </template>
@@ -29,51 +68,125 @@
   export default {
     data: function(){
       return {
-        selectedOption: {
+        languageOption: {
           name: '',
         },
-        showMenu: false,
-        placeholderText: 'Please select an item',
-        options: [
-          { id: 0, name: 'C++' },
-          { id: 1, name: 'Java' }
+        showLanguageMenu: false,
+        placeholderTextLanguage: '언어',
+        languageOptions: [
+          { id: 0, name: 'C++' }
         ],
-        closeOnOutsideClick: {
+        closeOnOutsideClickLanguage: {
           default: true
         },
-        selected: {},
-        placeholder: '',
+        selectedLanguage: {},
+        placeholderLanguage: '',
+        showThemeMenu: false,
+        themeOption: {
+          name: '',
+        },
+        placeholderTextTheme: '테마',
+        themeOptions: [
+          { id: 0, name: 'default' }
+        ],
+        selectedTheme: {},
+        placeholderTheme: '',
+        closeOnOutsideClickTheme: {
+          default: true
+        },
+        showAlgoSiteMenu: false,
+        algoSiteOption: {
+          name: '',
+        },
+        placeholderTextAlgoSite: '문제사이트',
+        algoSiteOptions: [
+          { id: 0, name: 'SWEA' }
+        ],
+        selectedAlgoSite: {},
+        placeholderAlgoSite: '',
+        closeOnOutsideClickAlgoSite: {
+          default: true
+        }
       }
     },
     mounted() {
-      this.selectedOption = this.selected;
-      if (this.placeholder){
-        this.placeholderText = this.placeholder;
+      this.languageOption = this.selectedLanguage;
+      if (this.placeholderLanguage){
+        this.placeholderTextLanguage = this.placeholderLanguage;
       }
 
-      if (this.closeOnOutsideClick) {
-        document.addEventListener('click', this.clickHandler);
+      this.themeOption = this.selectedTheme;
+      if (this.placeholderTheme){
+        this.placeholderTextTheme = this.placeholderTheme;
+      }
+
+      this.algoSiteOption = this.selectedAlgoSite;
+      if (this.placeholderAlgoSite){
+        this.placeholderTextAlgoSite = this.placeholderAlgoSite;
+      }
+
+      if (this.closeOnOutsideClickLanguage) {
+        document.addEventListener('click', this.clickHandlerLanguage);
+      }
+      if (this.closeOnOutsideClickTheme){
+        document.addEventListener('click', this.clickHandlerTheme);
+      }
+      if (this.closeOnOutsideClickAlgoSite){
+        document.addEventListener('click', this.clickHandlerAlgoSite);
       }
     },
     beforeDestroy(){
-      document.removeEventListener('click', this.clickHandler);
+      document.removeEventListener('click', this.clickHandlerLanguage);
+      document.removeEventListener('click', this.clickHandlerTheme);
+      document.removeEventListener('click', this.clickHandlerAlgoSite);
     },
     methods: {
-      updateOption(option) {
-        this.selectedOption = option;
-        this.showMenu = false;
-        this.$emit('updateOption', this.selectedOption);
+      updateLanguageOption(option) {
+        this.languageOption = option;
+        this.showLanguageMenu = false;
+        this.$emit('updateLanguageOption', this.languageOption);
       },
-      toggleMenu() {
-        this.showMenu = !this.showMenu;
+      toggleLanguageMenu() {
+        this.showLanguageMenu = !this.showLanguageMenu;
       },
-
-      clickHandler(event) {
+      updateThemeOption(option){
+        this.themeOption = option;
+        this.showThemeMenu = false;
+        this.$emit('updateThemeOption', this.showThemeMenu);
+      },
+      toggleThemeMenu(){
+        this.showThemeMenu = !this.showThemeMenu;
+      },
+      updateAlgoSiteOption(option){
+        this.algoSiteOption = option;
+        this.showAlgoSiteMenu = false;
+        this.$emit('updateAlgoSiteOption', this.showAlgoSiteMenu);
+      },
+      toggleAlgoSiteMenu(){
+        this.showAlgoSiteMenu = !this.showAlgoSiteMenu;
+      },
+      clickHandlerLanguage(event) {
         const { target } = event;
         const { $el } = this;
 
         if (!$el.contains(target)) {
-          this.showMenu = false;
+          this.showLanguageMenu = false;
+        }
+      },
+      clickHandlerTheme(event) {
+        const { target } = event;
+        const { $el } = this;
+
+        if (!$el.contains(target)) {
+          this.showThemeMenu = false;
+        }
+      },
+      clickHandlerAlgoSite(event) {
+        const { target } = event;
+        const { $el } = this;
+
+        if (!$el.contains(target)) {
+          this.showAlgoSiteMenu = false;
         }
       }
     }
@@ -88,7 +201,7 @@
   }
 
   .problems {
-    margin: 0;
+    margin-left: -7vw;
     list-style: none;
     float: left;
   }
@@ -135,7 +248,7 @@
     overflow: hidden;
   }
   .dropdown-toggle:hover {
-    background: #e1e1e1;
+    background: #CFEAFF;
     cursor: pointer;
   }
 
@@ -198,4 +311,38 @@
       list-style: none;
   }
 
+  .runButton {
+    float: right;
+    box-sizing: border-box;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid rgb(68, 68, 68);
+    border-radius: 0.6em;
+    color: rgb(68, 68, 68);
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    font-size: 3vh;
+    font-weight: 400;
+    line-height: 1;
+    margin: 1vh;
+    padding: 0.7em 1.4em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Fredoka One', cursive;
+    font-weight: 700;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  }
+  
+  .runButton:hover,
+  .runButton:focus {
+    color: #fff;
+    outline: 0;
+    box-shadow: 0 0 40px 40px rgb(68, 68, 68) inset;
+  }
+
+  .clear {
+    clear: both;
+  }
 </style>

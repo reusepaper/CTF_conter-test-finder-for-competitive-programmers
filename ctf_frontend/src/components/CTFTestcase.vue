@@ -1,12 +1,12 @@
 <template>
   <div class="testcase">
-    Testcase
+    {{ propsTestcase }}
   </div>
 </template>
 
 <script>
   export default {
-    
+    props: ['propsTestcase']
   }
 </script>
 
@@ -17,4 +17,5 @@
     float: left;
     background-color: white;
   }
+
 </style>
