@@ -5,7 +5,7 @@ module.exports = {
   devServer : {
     proxy : {
       'mark_code' : {
-        target: 'http://localhost:3000/',
+        target: 'http://52.78.48.222:3000/',
         changeOrigin: true,
         pathRewrite: {
           '^/mark_code': ''
