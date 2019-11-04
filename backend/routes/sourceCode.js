@@ -54,7 +54,6 @@ router.post('/', function(req, res, next) {
     website_type:req.body.website_type,
     problem_number:req.body.problem_number,
     problem_name:req.body.problem_name
-    
   };
 
   //console.log(codeObj);
