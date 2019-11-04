@@ -1,12 +1,14 @@
 <template>
   <div class="testcase">
-    Testcase
+    <div>테스트케이스</div>
+    <pre>{{ ins.join('\n') }}
+    </pre>
   </div>
 </template>
 
 <script>
   export default {
-    
+    props: ['ins']
   }
 </script>
 
@@ -17,4 +19,5 @@
     float: left;
     background-color: white;
   }
+
 </style>

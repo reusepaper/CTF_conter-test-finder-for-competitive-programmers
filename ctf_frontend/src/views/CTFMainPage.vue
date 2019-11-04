@@ -3,14 +3,15 @@
     <CTFHeader></CTFHeader>
     <CTFNavbar></CTFNavbar>
     <div>
-      <CTFCode codeStyle="userCode"></CTFCode>
-      <CTFCode codeStyle="rightCode"></CTFCode>
+      <CTFCode v-on:printResult="print"></CTFCode>
+      <!-- <CTFCode codeStyle="userCode"></CTFCode>
+      <CTFCode codeStyle="rightCode"></CTFCode> -->
     </div>
     <CTFProgressbar></CTFProgressbar>
     <div>
-      <CTFTestcase></CTFTestcase>
-      <CTFResult resultStyle="userResult"></CTFResult>
-      <CTFResult resultStyle="rightResult"></CTFResult>
+      <CTFTestcase v-bind:ins="testcase"></CTFTestcase>
+      <CTFResult v-bind:subs="user" resultStyle="userResult"></CTFResult>
+      <CTFResult v-bind:ans="right" resultStyle="rightResult"></CTFResult>
     </div>
   </div>
 </template>
@@ -24,6 +25,10 @@
   import CTFTestcase from '../components/CTFTestcase';
 
   export default {
+    /*jslint devel: true */
+    /* eslint-disable no-console */
+    /*eslint no-undef: "error"*/
+    /*eslint-env node*/
     components: {
       CTFHeader,
       CTFNavbar,
@@ -31,6 +36,21 @@
       CTFProgressbar,
       CTFResult,
       CTFTestcase
+    },
+    data: function(){
+      return {
+        testcase: '',
+        user: '',
+        right: ''
+      }
+    },
+    methods: {
+      print: function(tc, u, r){ // eslint-disable-line no-unused-vars
+        console.log(tc);
+        this.testcase = tc;
+        this.user = u;
+        this.right = r;
+      }
     }
   }
 </script>
