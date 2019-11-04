@@ -24,7 +24,7 @@ router.post('/', function(req, res, next) {
 
   var child;
 
-command = "judge "
+command = "python /home/ubuntu/project/s1p2151001/backend/mwt/mwt/main.py "
 source = '"'+userInputCode+'"'; 
 
   child = exec(command + source,
