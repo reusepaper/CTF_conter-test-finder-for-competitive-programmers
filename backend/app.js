@@ -4,8 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var memberRouter = require('./routes/member');
 var markCodesRouter = require('./routes/markCode');
 var sourceCode = require('./routes/sourceCode');
@@ -28,8 +26,6 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: false })); // support encoded bodies
 
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/member', memberRouter);
 app.use('/mark_code', markCodesRouter);
 app.use('/source_code', sourceCode);
